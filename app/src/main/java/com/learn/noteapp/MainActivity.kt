@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             NoteAppTheme {
-                NoteScreen()
+                NoteScreen(notes = emptyList(), onAddNote = {}, onRemoveNote = {})
             }
         }
     }

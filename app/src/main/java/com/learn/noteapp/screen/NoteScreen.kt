@@ -24,10 +24,15 @@ import androidx.compose.ui.unit.dp
 import com.learn.noteapp.R
 import com.learn.noteapp.components.NoteButton
 import com.learn.noteapp.components.NoteInputText
+import com.learn.noteapp.model.Note
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NoteScreen() {
+fun NoteScreen(
+    notes: List<Note>,
+    onAddNote: (Note) -> Unit,
+    onRemoveNote: (Note) -> Unit
+) {
     var title by remember {
         mutableStateOf("")
     }
@@ -79,7 +84,13 @@ fun NoteScreen() {
 
             NoteButton(
                 text = "Save",
-                onClick = {}
+                onClick = {
+                    if (title.isNotEmpty() && description.isNotEmpty()) {
+                        // save / add to list
+                        title = ""
+                        description = ""
+                    }
+                }
             )
         }
     }
@@ -88,5 +99,5 @@ fun NoteScreen() {
 @Preview(showBackground = true)
 @Composable
 fun NoteScreenPreview() {
-    NoteScreen()
+    NoteScreen(notes = emptyList(), onAddNote = {}, onRemoveNote = {})
 }
