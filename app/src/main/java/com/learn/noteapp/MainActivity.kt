@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.learn.noteapp.data.NoteDataSource
 import com.learn.noteapp.screen.NoteScreen
 import com.learn.noteapp.ui.theme.NoteAppTheme
 
@@ -20,7 +21,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             NoteAppTheme {
-                NoteScreen(notes = emptyList(), onAddNote = {}, onRemoveNote = {})
+                NoteScreen(notes = NoteDataSource().loadNotes(), onAddNote = {}, onRemoveNote = {})
             }
         }
     }
